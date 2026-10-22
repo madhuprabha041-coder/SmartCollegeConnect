@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            color: #ffffff;
+            background:
+                radial-gradient(ellipse at 15% 20%, #18275c 0%, transparent 40%),
+                radial-gradient(ellipse at 85% 75%, #40164f 0%, transparent 38%),
+                #080b18;
+            overflow-x: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 7%;
+            border-bottom: 1px solid rgba(105, 231, 255, 0.18);
+            background: rgba(9, 13, 31, 0.75);
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            color: #70f3ff;
+            text-shadow: 0 0 15px #00cfff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #dce6ff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #70f3ff;
+            text-shadow: 0 0 10px #00d9ff;
+        }
+
+        .nav-signup {
+            padding: 11px 20px;
+            border: 1px solid #65efff;
+            border-radius: 9px;
+            color: #65efff;
+            box-shadow: 0 0 12px rgba(0, 217, 255, 0.15);
+        }
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 10px 18px;
+            border: 1px solid rgba(112, 243, 255, 0.4);
+            border-radius: 30px;
+            color: #8af5ff;
+            background: rgba(30, 190, 255, 0.08);
+            margin-bottom: 28px;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 7vw, 76px);
+            line-height: 1.12;
+            margin-bottom: 24px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(
+                90deg, #65efff, #9b8aff, #ff77d9
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 0 18px rgba(85, 180, 255, 0.2));
+        }
+
+        .hero p {
+            color: #b8c4e4;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 15px 28px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            color: #080b18;
+            background: linear-gradient(100deg, #65efff, #a79aff);
+            box-shadow: 0 0 25px rgba(72, 215, 255, 0.35);
+        }
+
+        .btn-secondary {
+            color: #ffffff;
+            border: 1px solid #8a8fff;
+            background: rgba(138, 143, 255, 0.08);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 28px rgba(111, 221, 255, 0.5);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+            padding: 20px 7% 80px;
+        }
+
+        .feature-card {
+            padding: 28px 20px;
+            text-align: center;
+            border-radius: 16px;
+            background: linear-gradient(
+                145deg,
+                rgba(28, 39, 76, 0.8),
+                rgba(24, 14, 48, 0.8)
+            );
+            border: 1px solid rgba(117, 151, 255, 0.25);
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: #70f3ff;
+            box-shadow: 0 0 24px rgba(76, 219, 255, 0.16);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            color: #8cefff;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #b8c4e4;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            color: #8490b4;
+            border-top: 1px solid rgba(105, 231, 255, 0.15);
+        }
+
+        @media (max-width: 800px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">✦ Campus Hub</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#features">Features</a>
+            <a href="/login/">Login</a>
+            <a href="/register/" class="nav-signup">Sign Up</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="tag">✦ YOUR CAMPUS, CONNECTED</div>
+
+            <h1>
+                Connect.
+                <span class="gradient-text">Learn.</span><br>
+                Grow Together.
+            </h1>
+
+            <p>
+                One smart platform for students and faculty.
+                Discover college announcements, share study materials,
+                explore events, and celebrate student achievements —
+                all in one place.
+            </p>
+
+            <div class="buttons">
+                <a href="/register/" class="btn btn-primary">
+                    Get Started &nbsp; →
+                </a>
+
+                <a href="/login/" class="btn btn-secondary">
+                    Login to Your Account
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+
+        <div class="feature-card">
+            <div class="feature-icon">📢</div>
+            <h3>Announcements</h3>
+            <p>Stay updated with important college notices and news.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Study Materials</h3>
+            <p>Access learning resources shared by your faculty.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📅</div>
+            <h3>College Events</h3>
+            <p>Explore upcoming workshops, programs, and campus events.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3>Student Activities</h3>
+            <p>Share your achievements and showcase your participation.</p>
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 Campus Hub | Connecting Campus Communities
+    </footer>
+
+</body>
+</html>

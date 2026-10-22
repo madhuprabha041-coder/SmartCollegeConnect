@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Campus Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            color: white;
+            background:
+                radial-gradient(ellipse at top left, #692bba55, transparent 40%),
+                radial-gradient(ellipse at bottom right, #00c8ff30, transparent 40%),
+                #0b1026;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            padding: 22px 8%;
+            background: #111832;
+            border-bottom: 1px solid #ffffff20;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ff65d8, #8b83ff, #55eaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav a {
+            color: #dce5ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        main {
+            width: min(850px, 90%);
+            margin: auto;
+            padding: 65px 0;
+        }
+
+        .welcome-card {
+            padding: 45px 35px;
+            border-radius: 22px;
+            text-align: center;
+            background: linear-gradient(145deg, #1b2447, #15162f);
+            border: 1px solid #9d8bff55;
+            box-shadow: 0 0 45px #7944ff20;
+        }
+
+        .emoji {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(30px, 5vw, 43px);
+            margin-bottom: 15px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #ff71d5, #9d8bff, #54eaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .welcome-card p {
+            color: #c0cbea;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 9px 15px;
+            margin-bottom: 25px;
+            border-radius: 30px;
+            color: #7cffc4;
+            background: #38e99b18;
+            border: 1px solid #7cffc455;
+            font-size: 14px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .primary {
+            background: linear-gradient(100deg, #913dff, #e33ec9);
+            box-shadow: 0 0 22px #b52cff40;
+        }
+
+        .secondary {
+            border: 1px solid #5ce5ff;
+            background: #35cfff12;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #aeb9df;
+            background: #080c1d;
+        }
+
+        @media (max-width: 500px) {
+            .welcome-card {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">✦ Campus Hub</div>
+        <a href="{% url 'home' %}">← Back to Home</a>
+    </nav>
+
+    <main>
+        <section class="welcome-card">
+            <div class="emoji">🎓</div>
+
+            <div class="status">● Login Successful</div>
+
+            <h1>Welcome, <span>{{ request.user.username }}</span>!</h1>
+
+            <p>
+                Welcome to your Campus Hub dashboard.
+                Stay connected with your college community,
+                explore updates, and make your campus experience better.
+            </p>
+
+            <div class="buttons">
+                <a href="{% url 'home' %}" class="btn primary">
+                    Explore Campus Hub →
+                </a>
+
+                <a href="{% url 'logout' %}" class="btn secondary">
+                    Logout
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 Campus Hub | Your College, One Community ✨
+    </footer>
+
+</body>
+</html>

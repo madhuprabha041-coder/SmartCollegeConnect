@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Smart College Connect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 350px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h2 { text-align: center; color: #1e3a8a; }
+        label { display: block; margin-top: 12px; }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .messages { color: #b91c1c; }
+        .link { text-align: center; margin-top: 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Account</h2>
+        <p>Join Smart College Connect</p>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"
+                   required autocomplete="username">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email"
+                   required autocomplete="email">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   required autocomplete="new-password">
+
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password"
+                   name="confirm_password" required
+                   autocomplete="new-password">
+
+            <label for="role">Register as</label>
+            <select id="role" name="role" required>
+                <option value="">Select your role</option>
+                <option value="student">Student</option>
+                <option value="faculty">Faculty</option>
+            </select>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <div class="link">
+            Already have an account?
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </div>
+</body>
+</html>
